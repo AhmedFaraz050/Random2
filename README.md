@@ -1,39 +1,40 @@
-Got it 👍 — your README is already clear, but I’ll polish it for flow, formatting, and consistency so it looks professional and assignment-ready. Here’s the corrected version:
-
----
-
-# 📰 AI News Summarizer & Q\&A Tool
+📰 AI News Summarizer & Q&A Tool
 
 A beginner-friendly Python tool that:
 
-* Summarizes any news article in **3–4 clear sentences**
-* Lets you ask at least **3 questions** about the article
-* Tests how summaries change at different creativity levels (**temperature 0.1 / 0.7 / 1.0**)
-* Logs your results and analysis for your assignment
+Summarizes any news article in 3–4 clear sentences
 
-Built as part of **Week 4 of the AI Fellowship**, using the **Gemini API by Google**.
+Lets you ask at least 3 questions about the article
 
----
+Tests how summaries change at different creativity levels (temperature 0.1 / 0.7 / 1.0)
 
-## ✨ Features
+Logs your results and analysis for your assignment
 
-* Input any article (paste text, use a `.txt` file, or URL if supported)
-* Shows **original article length** (words + characters)
-* Generates a **concise summary (3–4 sentences)**
-* Allows **interactive Q\&A** based only on the article
-* Creates **multiple summaries at different temperatures**
+Built as part of Week 4 of the AI Fellowship, using the Gemini API by Google.
 
-  * `0.1` → Robotic & factual
-  * `0.7` → Balanced & clear
-  * `1.0` → More creative & free
-* Saves all outputs in the `runs/` folder for analysis
-* Helps you complete `observations.md` for your assignment write-up
+✨ Features
 
----
+Input any article (paste text, use a .txt file, or URL if supported)
 
-## 📁 Project Structure
+Shows original article length (words + characters)
 
-```
+Generates a concise summary (3–4 sentences)
+
+Allows interactive Q&A based only on the article
+
+Creates multiple summaries at different temperatures
+
+0.1 → Robotic & factual
+
+0.7 → Balanced & clear
+
+1.0 → More creative & free
+
+Saves all outputs in the runs/ folder for analysis
+
+Helps you complete observations.md for your assignment write-up
+
+📁 Project Structure
 AI-NEWS-SUMMARIZER/
 │── summarizer.py      # Main script
 │── requirements.txt   # Dependencies
@@ -42,25 +43,18 @@ AI-NEWS-SUMMARIZER/
 │── rubric.md          # (Optional) Quality scoring rubric
 │── runs/              # Auto-saved summaries & experiment outputs
 └── .env               # Contains GEMINI_API_KEY (keep private!)
-```
 
-⚠️ **Important:** `.env` must not be pushed to GitHub. Add it to `.gitignore`.
 
----
+⚠️ Important: .env must not be pushed to GitHub. Add it to .gitignore.
 
-## ⚙️ Setup Instructions
+⚙️ Setup Instructions
+1. Install Python
 
-### 1. Install Python
+Make sure you have Python 3.10+ installed:
 
-Make sure you have **Python 3.10+** installed:
-
-```bash
 python --version
-```
 
-### 2. Create a Virtual Environment
-
-```bash
+2. Create a Virtual Environment
 python -m venv .venv
 
 # Windows
@@ -68,97 +62,72 @@ python -m venv .venv
 
 # macOS / Linux
 source .venv/bin/activate
-```
 
-### 3. Install Dependencies
-
-```bash
+3. Install Dependencies
 pip install -r requirements.txt
-```
 
-### 4. Add Your Gemini API Key
+4. Add Your Gemini API Key
 
-1. Get a key from [Google AI Studio](https://aistudio.google.com/).
-2. Create a `.env` file in the project root with:
+Get a key from Google AI Studio
+.
 
-```env
+Create a .env file in the project root with:
+
 GEMINI_API_KEY=your_api_key_here
-```
 
----
+▶️ How to Use
+Option 1 — From a .txt File (Recommended)
 
-## ▶️ How to Use
+Paste your article into article.txt and run:
 
-### Option 1 — From a `.txt` File (Recommended)
-
-Paste your article into `article.txt` and run:
-
-```bash
 python summarizer.py --file article.txt --experiment-temps "0.1,0.7,1.0" --qa
-```
 
-### Option 2 — Paste Text in Terminal
-
-```bash
+Option 2 — Paste Text in Terminal
 python summarizer.py --stdin --experiment-temps "0.1,0.7,1.0" --qa
-```
 
-### Option 3 — From a URL (if supported)
-
-```bash
+Option 3 — From a URL (if supported)
 python summarizer.py --url "https://example.com/article" --experiment-temps "0.1,0.7,1.0" --qa
-```
 
-⚠️ Many sites block scraping. If you see `403` or `401` errors, copy the article into `article.txt` instead.
 
----
+⚠️ Many sites block scraping. If you see 403 or 401 errors, copy the article into article.txt instead.
 
-## 💬 Asking Questions (Q\&A)
+💬 Asking Questions (Q&A)
 
 After summarization, the script will ask you to enter questions. Example:
 
-```
 Q1: Who performed at Wembley Stadium?
 Q2: How many people attended their tour?
 Q3: What was unique about their concert?
-```
 
-The tool answers using **only the article text**.
 
----
+The tool answers using only the article text.
 
-## 📊 Temperature Experiments
+📊 Temperature Experiments
 
 You can compare how summaries change at different temperatures:
 
-* **0.1 →** Robotic, factual
-* **0.7 →** Balanced, natural
-* **1.0 →** Creative, free-flowing
+0.1 → Robotic, factual
 
-All results are auto-saved into `runs/` and can be copied into `observations.md` for your analysis.
+0.7 → Balanced, natural
 
----
+1.0 → Creative, free-flowing
 
-## 📌 .gitignore
+All results are auto-saved into runs/ and can be copied into observations.md for your analysis.
 
-Make sure your `.gitignore` includes:
+📌 .gitignore
 
-```
+Make sure your .gitignore includes:
+
 .env
 .venv/
 __pycache__/
 *.pyc
 runs/*.json
-```
 
----
+📎 Notes
 
-## 📎 Notes
+Designed for learning & practice with LLMs in real-world tasks
 
-* Designed for **learning & practice with LLMs** in real-world tasks
-* **Beginner-friendly** — requires only basic Python
-* All work runs **locally on your machine**
+Beginner-friendly — requires only basic Python
 
----
-
-👉 Do you also want me to add a **sample `observations.md` template** so you can easily log temperature differences?
+All work runs locally on your machine
