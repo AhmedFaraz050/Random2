@@ -1,91 +1,164 @@
-
-# 📘 LLM Text Analyzer
-
-A tool for **summarization, tokenization analysis, cost estimation, sentiment analysis, and writing style detection** using Large Language Models (LLMs).  
-Built with **Gradio**, **Hugging Face Transformers**, and **Google Gemini API**.
+Got it 👍 — your README is already clear, but I’ll polish it for flow, formatting, and consistency so it looks professional and assignment-ready. Here’s the corrected version:
 
 ---
 
-## 🚀 Features
-- 🔹 Text Summarization (Gemini & Mistral)
-- 🔹 Tokenization & Token Usage Analysis (Hugging Face tokenizers)
-- 🔹 Cost Estimation per model
-- 🔹 Sentiment Analysis (positive, negative, neutral)
-- 🔹 Writing Style Analysis (formal/informal, complexity)
-- 🔹 Exportable Results (JSON/CSV planned)
-- 🔹 Interactive Gradio UI
+# 📰 AI News Summarizer & Q\&A Tool
+
+A beginner-friendly Python tool that:
+
+* Summarizes any news article in **3–4 clear sentences**
+* Lets you ask at least **3 questions** about the article
+* Tests how summaries change at different creativity levels (**temperature 0.1 / 0.7 / 1.0**)
+* Logs your results and analysis for your assignment
+
+Built as part of **Week 4 of the AI Fellowship**, using the **Gemini API by Google**.
 
 ---
 
-## 📂 Project Structure
+## ✨ Features
+
+* Input any article (paste text, use a `.txt` file, or URL if supported)
+* Shows **original article length** (words + characters)
+* Generates a **concise summary (3–4 sentences)**
+* Allows **interactive Q\&A** based only on the article
+* Creates **multiple summaries at different temperatures**
+
+  * `0.1` → Robotic & factual
+  * `0.7` → Balanced & clear
+  * `1.0` → More creative & free
+* Saves all outputs in the `runs/` folder for analysis
+* Helps you complete `observations.md` for your assignment write-up
+
+---
+
+## 📁 Project Structure
+
+```
+AI-NEWS-SUMMARIZER/
+│── summarizer.py      # Main script
+│── requirements.txt   # Dependencies
+│── article.txt        # Paste your article here
+│── observations.md    # Analysis of temperature outputs
+│── rubric.md          # (Optional) Quality scoring rubric
+│── runs/              # Auto-saved summaries & experiment outputs
+└── .env               # Contains GEMINI_API_KEY (keep private!)
 ```
 
-Text\_Summarizer/
-│── data/
-│   ├── sample\_texts/       # Example texts for testing
-│── utils/
-│   ├── llm\_helpers.py      # Summarization, sentiment, style detection
-│   ├── tokenizer\_helpers.py # Tokenization & cost estimation
-│── main.py                 # Main Gradio app
-│── requirements.txt        # Dependencies
-│── README.md               # Project overview
+⚠️ **Important:** `.env` must not be pushed to GitHub. Add it to `.gitignore`.
 
+---
 
-## ⚡ Installation
-Clone the repo and install dependencies:
+## ⚙️ Setup Instructions
+
+### 1. Install Python
+
+Make sure you have **Python 3.10+** installed:
+
 ```bash
-git clone https://github.com/your-username/Text_Summarizer.git
-cd Text_Summarizer
+python --version
+```
+
+### 2. Create a Virtual Environment
+
+```bash
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
-````
+```
+
+### 4. Add Your Gemini API Key
+
+1. Get a key from [Google AI Studio](https://aistudio.google.com/).
+2. Create a `.env` file in the project root with:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
 
 ---
 
-## ▶️ Usage
+## ▶️ How to Use
 
-Run the Gradio app:
+### Option 1 — From a `.txt` File (Recommended)
+
+Paste your article into `article.txt` and run:
 
 ```bash
-python main.py
+python summarizer.py --file article.txt --experiment-temps "0.1,0.7,1.0" --qa
 ```
 
-This will open a local Gradio UI in your browser.
+### Option 2 — Paste Text in Terminal
 
+```bash
+python summarizer.py --stdin --experiment-temps "0.1,0.7,1.0" --qa
+```
 
-## 📊 Example Inputs
+### Option 3 — From a URL (if supported)
 
-You can test with these:
+```bash
+python summarizer.py --url "https://example.com/article" --experiment-temps "0.1,0.7,1.0" --qa
+```
 
-* News Article (300-500 words)
-* Academic Abstract (150-200 words)
-* Social Media Post (50-100 words)
-* Technical Documentation (400-600 words)
-* Creative Writing (200-300 words)
-
-See **docs/usage\_examples.md** for detailed examples.
-
----
-
-## 📌 Requirements
-
-* Python 3.9+
-* Hugging Face `transformers`
-* Gradio
-* Torch
-* google-generativeai
-
-(Install automatically via `requirements.txt`)
+⚠️ Many sites block scraping. If you see `403` or `401` errors, copy the article into `article.txt` instead.
 
 ---
 
-## 🤝 Contributing
+## 💬 Asking Questions (Q\&A)
 
-Pull requests are welcome. For major changes, please open an issue first to discuss your idea.
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
+After summarization, the script will ask you to enter questions. Example:
 
 ```
+Q1: Who performed at Wembley Stadium?
+Q2: How many people attended their tour?
+Q3: What was unique about their concert?
+```
+
+The tool answers using **only the article text**.
+
+---
+
+## 📊 Temperature Experiments
+
+You can compare how summaries change at different temperatures:
+
+* **0.1 →** Robotic, factual
+* **0.7 →** Balanced, natural
+* **1.0 →** Creative, free-flowing
+
+All results are auto-saved into `runs/` and can be copied into `observations.md` for your analysis.
+
+---
+
+## 📌 .gitignore
+
+Make sure your `.gitignore` includes:
+
+```
+.env
+.venv/
+__pycache__/
+*.pyc
+runs/*.json
+```
+
+---
+
+## 📎 Notes
+
+* Designed for **learning & practice with LLMs** in real-world tasks
+* **Beginner-friendly** — requires only basic Python
+* All work runs **locally on your machine**
+
+---
+
+👉 Do you also want me to add a **sample `observations.md` template** so you can easily log temperature differences?
